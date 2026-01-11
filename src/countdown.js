@@ -1,16 +1,17 @@
-function countdownTimer(seconds) {
-    let remaining = seconds;
+function countdownTimer(startTime, interval, callback) {
+    let remaining = startTime;
 
     const timerId = setInterval(() => {
-        console.log(remaining);
+        callback(remaining); // call the callback with remaining time
         remaining--;
 
         if (remaining < 0) {
-            clearInterval(timerId);
+            clearInterval(timerId); // stop timer
         }
-    }, 1000);
+    }, interval);
 
-    return timerId;
+    return timerId; // return timer ID for test validation
 }
 
 module.exports = countdownTimer;
+

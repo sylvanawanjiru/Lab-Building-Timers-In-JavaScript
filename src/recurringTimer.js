@@ -1,15 +1,14 @@
-let recurringTimerId;
-
-function startRecurringTimer(message, interval) {
-    recurringTimerId = setInterval(() => {
-        console.log(message);
+function recurringTimer(message, interval, callback) {
+    const timerId = setInterval(() => {
+        callback(message); // log the message
     }, interval);
 
-    return recurringTimerId;
+    return timerId; // return ID so we can stop it externally
 }
 
-function stopRecurringTimer() {
-    clearInterval(recurringTimerId);
+function stopRecurringTimer(timerId) {
+    clearInterval(timerId); // stop the timer
 }
 
-module.exports = { startRecurringTimer, stopRecurringTimer };
+module.exports = { recurringTimer, stopRecurringTimer };
+

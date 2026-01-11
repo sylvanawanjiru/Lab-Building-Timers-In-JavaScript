@@ -1,11 +1,13 @@
-function delayedReminder(message, delay) {
+function delayedReminder(message, delay, callback) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            console.log(message);
-            resolve();
+            callback(message); // log the message
+            resolve(message); // resolve the promise
         }, delay);
     });
 }
 
 module.exports = delayedReminder;
+
+
 

@@ -1,9 +1,12 @@
 const countdownTimer = require('../src/countdown');
 
+jest.useFakeTimers();
+
 test('countdownTimer should return a timer ID', () => {
-    const timerId = countdownTimer(2);
+    const timerId = countdownTimer(3);
     expect(typeof timerId).toBe('number');
 
-    // Stop the timer immediately to prevent logging after test
+    // Fast-forward timers to prevent logging after test
+    jest.runOnlyPendingTimers();
     clearInterval(timerId);
 });
